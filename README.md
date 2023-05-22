@@ -1,38 +1,38 @@
 # masvoz-sagemcom-fast-5355-hacks
 
-Investigación sobre el router Sagemcom F@ST 5355
+Research on Sagemcom F@ST 5355 router
 
-## Indice
+## Table of contents
 
-1. [Introducción](#introducci%C3%B3n)
-2. [Operadores que ofrecen el router](#operadores-que-ofrecen-el-router)
-3. [Manuales del router](#manuales-del-router)
+1. [Introduction](#introduction%C3%B3n)
+2. [Operators that offer the router](#operators-that-offer-the-router)
+3. [Router manuals](#router-manuals)
 4. [Firmware](#firmware)
 5. [Hardware](#hardware)
-6. [Acceso SSH](#acceso-ssh)
+6. [SSH access](#ssh-access)
 7. [USB Storage](#usb-storage)
-8. [GPON Password](#gpon-password)
-9. [Configuración Inicial y actual](#configuraci%C3%B3n-inicial-y-actual)
-10. [Configuración SIP](#configuraci%C3%B3n-sip)
-11. [Contraseña admin](#contrase%C3%B1a-admin)
+GPON Password](#gpon-password) 9.
+Initial and current configuration](#initial-and-current-configuration) 10.
+10. [SIP Configuration](#configuraci%C3%B3n-sip)
+11. [Admin password](#contrase%C3%B1a-admin)
 12. [DHCP](#dhcp)
-12. [Referencias](#referencias)
+12. [References](#references)
 
-## Introducción
+## Introduction
 
-No soy nigún hacker o experto en seguridad. Esta pequeña investigación es poca parte mia (el punto 3 es completamente mio) y mucha parte investigación de multitud de usuarios puestas en orden (puedes ver las fuentes usadas en el capitulo 4. Referencias)
+I am no hacker or security expert. This little research is a little part of me (point 3 is entirely mine) and a lot of user research put in order (you can see the sources used in chapter 4. References)
 
-## Operadores que ofrecen el router
+## Operators offering the router
 
-Este router se ofrece a todos los operadores que trabajen sobre redes MasVoz. Actualmente son:
+This router is offered to all operators working on MasVoz networks. Currently they are:
 
 - MasVoz
 - Pepephone
 - Yoigo
 
-## Manuales del router
+## Router manuals
 
-No existe un manual oficial de MasVoz y cia para el usuario asi que no te vuelvas loco buscandolo. (Si alguien se anima a hacerlo se lo cuelgo aqui para ayudar a otros usuarios).
+There is no official user manual for MasVoz and cia so don't go crazy looking for it (if someone is encouraged to do it, I'll post it here to help other users).
 
 ## Firmware
 ```
@@ -42,89 +42,91 @@ Linux version 3.4.11-rt19 (g503707@shz-p0000665fl) (gcc version 4.6.2 (GCC) ) #2
 
 ```
 root@home:/# cat /proc/mtd
-dev:    size   erasesize  name
+dev: size erasesize name
 mtd0: 00020000 00020000 "nvram"
 mtd1: 000a0000 00020000 "bcm"
 mtd2: 00500000 00020000 "data"
-mtd3: 07a40000 00020000 "ubi"
-mtd4: 00086800 0001f000 "secondaryboot"
-mtd5: 00104340 0001f000 "uboot"
-mtd6: 00104340 0001f000 "uboot-rescue"
+mtd3: 07a40000 00020000 "ubi
+mtd4: 00086800 0001f000 "secondaryboot" mtd5: 00104340 00020000 "secondaryboot"
+mtd5: 00104340 0001f000 "uboot
+mtd6: 00104340 0001f000 "uboot-rescue
 mtd7: 000019e8 0001f000 "permanent_param"
 mtd8: 018d3000 0001f000 "rescue"
-mtd9: 0175f000 0001f000 "operational"
-mtd10: 0001f000 0001f000 "firm_header"
-mtd11: 0028b000 0001f000 "kernel"
-mtd12: 014d4000 0001f000 "rootfs"
+mtd9: 0175f000 0001f000 0001f000 "operational
+mtd10: 0001f000 0001f000 0001f000 "firm_header"
+mtd11: 0028b000 0001f000 0001f000 "kernel"
+mtd12: 014d4000 0001f000 0001f000 "rootfs"
 mtd13: 007c0000 0001f000 "filesystem1"
 mtd14: 009b0000 0001f000 "filesystem2"
 ```
 
+
 ## Hardware
 ```
 root@home:/# cat /proc/cpuinfo
-system type             : F@ST5655_V2
-processor               : 0
-cpu model               : Broadcom BMIPS4350 V8.0
-BogoMIPS                : 598.01
-wait instruction        : yes
-microsecond timers      : yes
-tlb_entries             : 32
-extra interrupt vector  : no
-hardware watchpoint     : no
-ASEs implemented        :
-shadow register sets    : 1
-kscratch registers      : 0
-core                    : 0
-VCED exceptions         : not available
-VCEI exceptions         : not available
+system type : F@ST5655_V2
+processor : 0
+cpu model : Broadcom BMIPS4350 V8.0
+BogoMIPS : 598.01
+wait instruction : yes
+microsecond timers : yes
+tlb_entries : 32
+extra interrupt vector : no
+hardware watchpoint : no
+ASEs implemented :
+shadow register sets : 1
+kscratch registers : 0
+core : 0
+VCED exceptions : not available
+VCEI exceptions : not available
 
-processor               : 1
-cpu model               : Broadcom BMIPS4350 V8.0
-BogoMIPS                : 606.20
-wait instruction        : yes
-microsecond timers      : yes
-tlb_entries             : 32
-extra interrupt vector  : no
-hardware watchpoint     : no
-ASEs implemented        :
-shadow register sets    : 1
-kscratch registers      : 0
-core                    : 0
-VCED exceptions         : not available
-VCEI exceptions         : not available
+processor : 1
+cpu model : Broadcom BMIPS4350 V8.0
+BogoMIPS : 606.20
+wait instruction : yes
+microsecond timers : yes
+tlb_entries : 32
+extra interrupt vector : no
+hardware watchpoint : no
+ASEs implemented :
+shadow register sets : 1
+kscratch registers : 0
+core : 0
+VCED exceptions : not available
+VCEI exceptions : not available
 ```
 
 ```
 root@home:/# cat /proc/meminfo
-MemTotal:         206932 kB
+MemTotal: 206932 kB
 etc...
 ```
 
-## Acceso SSH
+## SSH access
 
-1. Entra como el usuario normal con Chrome / Firefox (usuario: 1234 y password: 1234 segun el faq en la web de Yoigo)
-2. Abre la consola de desarrollador (F12 en Chrome)
-3. Pincha en consola. Esta las consola de comandos de Chrome / Firefox en el cual podemos usar javascript para programar o tocar el codigo ya existente en cualquier web. A continución iremos escribiendo una serie de comandos xmo para modificar la configuracion.
-4. Buscamos cual es el uid del usuario con el que nos hemos logado en mi caso es el uid=3. Tras ejecutar este comando:
+1. Login as normal user with Chrome / Firefox (user: 1234 and password: 1234 according to the faq on the Yoigo web)
+2. Open the developer console (F12 in Chrome)
+3. Click on console. This is the Chrome / Firefox command console in which we can use javascript to program or touch the existing code on any web. Then we will be writing a series of xmo commands to modify the configuration.
+4. We look for which is the uid of the user with which we have logged in my case is the uid=3. After executing this command:
 ```
 > $.xmo.getValuesTree("Device/UserAccounts/Users");
 
-(4) [{…}, {…}, {…}, {…}]
-0: {uid: 1, Enable: true, Login: "internal", Password: "", SecretQuery: "", …}
-1: {uid: 2, Enable: true, Login: "acs", Password: "", SecretQuery: "", …}
-2: {uid: 3, Enable: true, Login: "1234", Password: "", SecretQuery: "", …}
-3: {uid: 4, Enable: true, Login: "admin", Password: "", SecretQuery: "", …}
+(4) [{...}, {...}, {...}, {...}]
+0: {uid: 1, Enable: true, Login: "internal", Password: "", SecretQuery: "", ...}
+1: {uid: 2, Enable: true, Login: "acs", Password: "", SecretQuery: "", ...}
+2: {uid: 3, Enable: true, Login: "1234", Password: "", SecretQuery: "", ...}
+3: {uid: 4, Enable: true, Login: "admin", Password: "", SecretQuery: "", ...}
 ```
-5.Una vez tenemos el UID damos permisos al usuario para que pueda usar la consola SSH
+Once we have the UID we give permissions to the user to use the SSH console.
 ```
 > $.xmo.getValuesTree("Device/UserAccounts/Users/User[@uid='3']");
-> $.xmo.getValuesTree( "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses");
+> $.xmo.getValuesTree("Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses");
 > $.xmo.getValuesTree( "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses/RemoteAccess[@uid='3']/Enabled");
 > $.xmo.getValuesTree( "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses/RemoteAccess[@uid='4']/Enabled");
 ```
 
-6. Habilitamos por ultimo el SSH y el telnet que viene deshabilitados por defecto.
+
+6. Finally we enable SSH and telnet which are disabled by default.
 ```
 $.xmo.setValuesTree("ACCESS_ENABLE_ALL", "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses/RemoteAccess[@uid='3']/LANRestriction");
 $.xmo.setValuesTree("ACCESS_ENABLE_ALL", "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses/RemoteAccess[@uid='4']/LANRestriction");
@@ -133,44 +135,46 @@ $.xmo.setValuesTree(23, "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses
 $.xmo.setValuesTree(true, "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses/RemoteAccess[@uid='3']/Enabled");
 $.xmo.setValuesTree(true, "Device/UserAccounts/Users/User[@uid='3']/RemoteAccesses/RemoteAccess[@uid='4']/Enabled");
 ```
-7. Reiniciamos el router se recomienda hacerlo desde la interfaz del router. En mis pruebas da igual estos cambios persisten tras un reinicio fisico del router.
-8. Conectamos mediante SSH/Telnet con el usuario 1234. No voy a entrar como conectar o que programa usar tan solo decir que en el paso anterior habilitamos tantos el puerto telnet standar como el SSH standard.
-9. Ya dentro del rooter podemos ganar acceso root con "su" (el password suele ser "root"):
+7. We restart the router, it is recommended to do it from the router interface. In my tests it does not matter, these changes persist after a physical reboot of the router.
+8. We connect by means of SSH/Telnet with the user 1234. I am not going to go into how to connect or what program to use, just say that in the previous step we enabled both the standard telnet port and the standard SSH port.
+Once inside the rooter we can gain root access with "su" (the password is usually "root"):
 ```
 1234@home:/tmp$ su
 Password:
 
-BusyBox v1.17.3 (2018-10-17 14:24:21 CST) built-in shell (ash)
+BusyBox v1.17.3 (2018-10-17 14:24:21 CST) built-in shell (ash).
 Enter 'help' for a list of built-in commands.
 root@home:~#
 ```
 ## USB Storage
 
-Por defecto el USB del router esta habilitado como almacenamiento sino desde la interfaz con el usuario normal se puede habilitar.
-A traves de Telnet/SSH si pones un pendrive te lo reconocera inmediatamente y te lo montará en /mnt/sda1
+By default the router USB is enabled as storage but from the normal user interface it can be enabled.
+Through Telnet/SSH if you put a USB flash drive it will recognize it immediately and mount it in /mnt/sda1.
 
-Así puedes copiar archivos del router al pendrive o del pendrive al pc para pasar algun bin, algun archivo con el que estes trabajando sobre el router. Esto ultimo es muy recomendable para los pasos de obtener el GPON o el password SIP.
+This way you can copy files from the router to the pendrive or from the pendrive to the pc to pass some bin, some file that you are working with on the router. The latter is highly recommended for the steps to get the GPON or the SIP password.
 ```
-root@home:/# cp /archivo_origen.txt /mnt/sda1
-root@home:/# cp /mnt/sda1/archivo_origen.txt /tmp
+root@home:/# cp /source_file.txt /mnt/sda1
+root@home:/# cp /mnt/sda1/origin_file.txt /tmp
 ```
 
 ## GPON Password
 
-La contraseña GPON de la fibra esta en hexadecimal. Tendras que usar algun conversor si en lugar de hexadecimal para el nuevo router que pongas la quieres en plano. Por ejemplo desde: https://codebeautify.org/hex-string-converter
+The GPON password of the fiber is in hexadecimal. You will have to use some converter if instead of hexadecimal for the new router you want it in plain. For example from: https://codebeautify.org/hex-string-converter
 ```
 cp /opt/filesystem2/data/optical_conf.txt /mnt/sda1
 ```
 
-## Configuración Inicial y actual
+## Initial and current configuration
 
-El xml con la configuración actual se encuentra en XML se encuentra en: /tmp/cfg.xml desconozco porque no lo he probado si algun cambio directo en el xml tras reinicio sobrevive entiendo por la carpeta en la que esta que no, por tanto debe de almacenarse en algun sitio mas que no he localizo aún.
+The xml with the current configuration is in XML is located in: /tmp/cfg.xml I do not know because I have not tested if any direct change in the xml after reboot survives I understand by the folder in which it is not, so it must be stored somewhere else that I have not located yet.
 
-Por otro lado la configuración inicial del router que tienes nada mas resetear esta en: /etc/start-cfg.xml
+On the other hand the initial configuration of the router that you have just after reset is in: /etc/start-cfg.xml
 
-## Configuración SIP
 
-La configuración SIP se encuentra en /tmp/cfg.xml . El bloque que nos interesa es este:
+
+## SIP configuration
+
+The SIP configuration is located in /tmp/cfg.xml . The block we are interested in is this one:
 ```
 <SIP>
     <AuthUserName>e34910000000@ims.yoigo.com</AuthUserName>
@@ -180,34 +184,34 @@ La configuración SIP se encuentra en /tmp/cfg.xml . El bloque que nos interesa 
 </SIP>
 ```
 
-En mi caso con yoigo parace que el usuario es *"e34 + mi_telefono_fijo"*. Por otro lado la contraseña es aleatoria y alfanumerica.
+In my case with yoigo it seems that the user is *"e34 + my_fix_phone "*. On the other hand the password is random and alphanumeric.
 
-## Contraseña admin
+## Password admin
 
-En el firmware de MasVoz/Yoigo parece que viene con usuario de permisos mas elevados "admin" que permite hacer muchas cosas mas en el router. Al parecer este usuario solo se encuentra activo tras el resteo y meter la clave GPON o para que conecten los chicos del soporte tecnico a tu router para hacer tele-asistencia de manera externa.
+In the MasVoz/Yoigo firmware it seems that it comes with a higher permissions user "admin" that allows you to do many more things on the router. Apparently this user is only active after resetting and entering the GPON key or for the tech support guys to connect to your router for external tele-assistance.
 
-Aún asi por defecto este usuario podemos acceder a el pero tras el primer reinicio no deshabilita lo que hace es cambiar la contraseña (en primer reinicio suele ser por defecto "admin") y la cambia por una contraseña aleatoria. En mis pruebas parece que es numerica, lo cual nos viene muy bien para obtenerla y asi poder acceder a la configuración avanzada del router.
+Still by default this user can be accessed but after the first reboot it does not disable what it does is change the password (on first reboot it usually defaults to "admin") and changes it to a random password. In my tests it seems that it is numerical, which comes in handy to obtain it and thus to be able to access the advanced configuration of the router.
 
-1. Para obtenerla la tenemos en el archivo con la configuracion actual en: /tmp/cfg.xml
-2. La contraseña la tenemos que buscar en el bloque del usuario admin. Por ejemplo:
+1. To obtain it, we have it in the file with the current configuration in: /tmp/cfg.xml
+2. The password we have to look for it in the block of the admin user. For example:
 ```
 <User uid="4">
     <Enable>true</Enable>
     <Login>admin</Login>
     <Password>6b2a8b2864a82a58032a848f87b4a0d5</Password>
 ```
-3. Como podemos intuir la contraseña no es esta sino es un MD5 de la misma. Al ser numerica es facilmente encontratable en internet buscando en un diccionario para obtener la equivalencia del MD5 con el texto plano. Esta busqueda en Google os la dejo a vosotros.
+3. As we can guess the password is not this one but an MD5 of it. As it is numerical it is easily found on the internet by searching in a dictionary to obtain the equivalence of the MD5 with the plain text. I leave this Google search to you.
 
 ## DHCP
 
-Para que en la ventana de DHCP te deje de guardar en la consola de depuracion de tu navegador tienes que escribir los siguientes comandos ya que la GUI del router se encuentra bugueada:
+To get the DHCP window to save in the debug console of your browser you have to type the following commands since the router GUI is bugged:
 
 ```
 $('#dhcpForm').scope().dhcpForm.$valid=true
 $('#dhcpForm').scope().dhcpForm.$invalid=false
 ```
 
-## Referencias
-- [SAGEMCOM-FAST-5370e-TELIA](https://github.com/wuseman/SAGEMCOM-FAST-5370e-TELIA) Gran investigación sobre otro router no del todo aplicatible ya que en España el firmware ha cambiado, se ha actualizado y se ha personalizado. Pero es tan tan parecido que incluso en el firmware hay ficheros que hablan de felia y townki.
+## References
+- SAGEMCOM-FAST-5370e-TELIA](https://github.com/wuseman/SAGEMCOM-FAST-5370e-TELIA) Great research on another router not entirely applicable since in Spain the firmware has changed, updated and customized. But it is so similar that even in the firmware there are files that talk about felia and townki.
 
-- [Foro Banda Ancha sobre MasMovil](https://bandaancha.eu/foros/extraer-gpon-router-sagemcom-fast-5655v2-1731346) Aqui realmente empecé a ver que decian los usuarios ya que mi idea era poner mi propio router en el domicilio y la imposibilidad o impasividad del servicio tecnico de MasVoz te de lo ayudee en lo necesario para configurar otro router o acceder a una configuración mas avanzada del mismo.
+- Foro Banda Ancha sobre MasMovil](https://bandaancha.eu/foros/extraer-gpon-router-sagemcom-fast-5655v2-1731346) Here I really started to see what the users were saying since my idea was to put my own router at home and the impossibility or impassivity of the MasVoz technical service to help you with the necessary to configure another router or access to a more advanced configuration of the same.
